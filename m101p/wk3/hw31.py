@@ -7,10 +7,12 @@ cursor = db.students.find({})
 
 for c in cursor:
     hw_grade_to_remove = 0
+    first_homework = True
     for score in c['scores']:
-        if (score['type'] == "homework") and not hw_grade_to_remove:
+        if (score['type'] == "homework") and first_homework:
             #first homework
             hw_grade_to_remove = score['score']
+            first_homework = False
         elif (score['type'] == "homework") and score['score'] < hw_grade_to_remove:
             #second homework and less than first
             hw_grade_to_remove = score['score']
