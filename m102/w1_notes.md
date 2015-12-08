@@ -50,10 +50,10 @@ db - predefined variable with connection to database
     show dbs
     use <database>
     show collections
-    db.<collection>.count()
-    db.<collection>.find()
-    db.<collection>.findOne()
-    db.<collection>.find().limit(4).skip(2).toArray()
+    db.collection.count()
+    db.collection.find()
+    db.collection.findOne()
+    db.collection.find().limit(4).skip(2).toArray()
 
 `db.<collection>.find()` returns a cursor to the results and iterates up to 20 times to access up to the first 20 docs that match the query
 it - iterate the [cursor](https://docs.mongodb.org/manual/reference/method/js-cursor/), get 20 more, Type "it" for more
@@ -62,7 +62,7 @@ it - iterate the [cursor](https://docs.mongodb.org/manual/reference/method/js-cu
 
 [Projection document](https://docs.mongodb.org/manual/tutorial/project-fields-from-query-results/) limits fields in returned documents.  _id must be explicitly suppressed as it is included by default.
 
-    db.collection.find( <query expression>, <projection/field selection> )
+    db.collection.find(<query expression>, <projection/field selection>)
     db.collection.find({}, {name: 1, _id: 0})
     db.collection.find({price: {$gte: 200}}, {name: 1, price: 1})
 

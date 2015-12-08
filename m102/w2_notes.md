@@ -6,7 +6,7 @@ Document limit = 16MB
 ### Create
 
     db.collection.insert(<document>)
-    db.collection.insert( [ <document>, <document> ... ] )
+    db.collection.insert([<document>, <document> ... ])
 
 
 ### Update
@@ -15,7 +15,7 @@ Document limit = 16MB
 upsert and multi are optional and false by default  
 upsert - update or insert if not present
 
-Update types
+#### Update types:
 - full update doc update/replacement
 - partial update
 
