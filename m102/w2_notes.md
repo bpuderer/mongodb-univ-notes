@@ -20,8 +20,8 @@ upsert - update or insert if not present
 - partial update
 
 
-    db.users.update({active: true}, {$inc: {priority: 2}}, false, true)
-    db.pageviews.update({_id: "/sports/football"}, {$inc: {views: 1}}, true)
+```db.users.update({active: true}, {$inc: {priority: 2}}, false, true)```
+```db.pageviews.update({_id: "/sports/football"}, {$inc: {views: 1}}, true)```
 
 ### Remove
 

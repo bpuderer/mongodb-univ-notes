@@ -11,7 +11,7 @@ MongoDB 3.0 - pluggable storage engine, but only two choices, MMAPv1 and WiredTi
 - data on disk is BSON
 
 
-    mongod --storageEngine mmapv1
+`mongod --storageEngine mmapv1`
 
 db.serverStatus() will show storageEngine
 
@@ -33,7 +33,7 @@ Power of 2 sized allocations.  Room to grow for every document.  Standardized si
 - writes are separate and incorporated later (during update, writes a new version instead of overwriting existing data like mmapv1.  so no document movement or padding factor)
 
 
-    mongod --storageEngine wiredTiger
+`mongod --storageEngine wiredTiger`
 
 WiredTiger cache = half of RAM (by default)
 
@@ -92,8 +92,8 @@ index to automatically remove documents from a collection after a certain amount
     db.collection.createIndex({a: 1}, {expireAfterSeconds: <number>})
 
 #### [Geospatial](https://docs.mongodb.org/manual/applications/geospatial-indexes/)
-    db.collection.createIndex( { loc : "2dsphere" } )
-    db.places.find({loc: {$near: {$geometry: { type: "Point", coordinates: [2,2.01] }, spherical: true }}})
+    db.collection.createIndex({loc: "2dsphere"})
+    db.places.find({loc: {$near: {$geometry: {type: "Point", coordinates:[2,2.01]}, spherical: true}}})
 
 #### [Text search](https://docs.mongodb.org/manual/reference/operator/query/text/#op._S_text)
 
@@ -103,7 +103,7 @@ Field that's indexed has to be a string
 
 case insensitive, plurality insensitive (tree or trees matches tree)
 
-    db.collection.find({$text: {$search: "cat"}}) - 
+    db.collection.find({$text: {$search: "cat"}})
 
 search for multiple by separating with a space (logical OR)
 
