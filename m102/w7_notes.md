@@ -2,7 +2,7 @@
 
 Security
 - "trusted environment" - no one has access except for clients (and they get full access to db).  lock down @ network layer, relevant tcp ports.  Default.
-- mongodb authentication --auth (securing client access- authentication and authorization) --keyFile [fname] (intra-cluster authentication).  Can layer ssl atop (encryption of all communications) but have to compile mongo with scons --ssl option
+- mongodb authentication --auth (securing client access- authentication and authorization) --keyFile fname (intra-cluster authentication).  Can layer ssl atop (encryption of all communications) but have to compile mongo with scons --ssl option
 
 keyFile for intracluster authentication (members of shard/replica sets).  shared secret key file to cross authentication among themselves to coordinate their actions.  file present on all servers in cluster.
 
@@ -56,15 +56,14 @@ admin db is special - users and roles that are cluster/server wide
 - dbAdminAnyDatabase
 
 
-    mongo --host localhost
-    db.addUser("the_admin", "testpassword")
+```mongo --host localhost```  
+```db.addUser("the_admin", "testpassword")```
 
 User Types
 - admin - can do administration, created in the admin db, can access all databases
 - regular - access specific db, read/write or readOnly
 
-
-    db.createUser(<user>, <pswd>, [<readOnly>])
+```db.createUser(<user>, <pswd>, [<readOnly>])```
 
 contents of keyfile a string of base64 legal characters
 
@@ -73,7 +72,7 @@ contents of keyfile a string of base64 legal characters
     # openssl rand --base64 60
 
 ### Backup and Restore
-- mongodump --oplog, mongorestore --oplogReplay.  oplog option for real “point in time” backup.  Hot backup (doesn't need to be shutdown)
+- [mongodump](https://docs.mongodb.org/manual/reference/program/mongodump/) --oplog, [mongorestore](https://docs.mongodb.org/manual/reference/program/mongorestore/) --oplogReplay.  oplog option for real "point in time" backup.  Hot backup (doesn't need to be shutdown)
 - filesystem snapshot.  lvm?  hot backup.  **Must** have journaling enabled.  db.fsyncLock() / fsyncUnlock() - db snapshots of sub-volumes.  Needs to be quick since no reading/writing during the lock.
 - backup from secondary - shutdown, copy files, restart.  start back up and it will catch up
 
@@ -138,4 +137,3 @@ Additional MongoDB Resources
 - [Twitter](https://twitter.com/MongoDB)
 - meetup groups
 - mongo monitoring service
-

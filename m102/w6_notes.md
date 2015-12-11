@@ -15,9 +15,9 @@ docs in the same collection which share the same shard key all on same shard.  i
 ['jane', 'joe'] -> S0  
 ['joe', 'kyle'] -> S2
 
-why range based?  
-1.  efficiency for queries that involve ranges.  send queries to particular shards
-2.  useful for sorting
+why range based?
+1. efficiency for queries that involve ranges.  send queries to particular shards
+2. useful for sorting
 
 More shards, higher replication factor
 
@@ -56,8 +56,8 @@ For each shard:
 
 - initiate the replica set 
   - rs.initiate()
-  - rs.add(“name:port”)
-  - rs.status())
+  - rs.add("name:port")
+  - rs.status()
 - "add" the shard to the cluster.  ```sh.addShard("replset/name:port")```  name:port of one member of replica set...it’ll find other members of replica set.  ```sh.status()```
 
 Unsharded collections reside fully on the primary/first shard (shard0) of the cluster.
